@@ -1,5 +1,11 @@
 import logging
-
+#
+# logging.basicConfig(
+#     level=logging.INFO,
+#     format='%(process)d: %(message)s',
+#     handlers=[logging.FileHandler(outfile), logging.StreamHandler()]
+# )
+#
 def setup_logger():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
