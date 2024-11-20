@@ -5,7 +5,6 @@ import argparse
 
 from pathlib import Path
 from multiprocessing import Pool
-from utils.ChromeBrowser import ChromeBrowser
 from utils.nameservers import nameservers
 from utils.logger import logger
 
@@ -19,12 +18,6 @@ def resolve_dns(hostname, rtype):
         answers = resolver.resolve(hostname, rtype)
         for rdata in answers:
             logger.info(f'SUCCESS: {hostname} {answers.rdtype} {rdata}')
-        with ChromeBrowser().browser as browser:
-            try:
-                browser.get('https://' + hostname)
-                browser.save_screenshot(f'./screenshots/{hostname}.png')
-            except Exception as e:
-                logger.error(f'Failed to take screenshot for {hostname}', e)
     except dns.resolver.NoAnswer:
         logger.info(f'No answer for {hostname}')
     except dns.resolver.NXDOMAIN:
