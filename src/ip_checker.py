@@ -27,7 +27,7 @@ def get_current_ip_address():
         return response.text
 
 def main():
-    db = 'ip_history.db'
+    db = '.ip_history.db'
 
     if pathlib.Path(db).is_file():
 
